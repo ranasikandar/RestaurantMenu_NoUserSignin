@@ -1,0 +1,231 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Restaurant.master.cs" Inherits="RestaurantMenu.Restaurant.Restaurant" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Google Fonts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Montserrat:400,500,600,700", "Noto+Sans:400,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<%: ResolveUrl("~/Template/assets/img/apple-touch-icon.png") %>" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<%: ResolveUrl("~/Template/assets/img/favicon-32x32.png") %>" />
+    <link rel="icon" type="image/png" sizes="16x16" href="<%: ResolveUrl("~/Template/assets/img/favicon-16x16.png") %>" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Template/assets/vendors/css/base/bootstrap.min.css") %>" />
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Template/assets/vendors/css/base/elisyam-1.5.min.css") %>" />
+    <link rel="stylesheet" href="<%: ResolveUrl("~/Template/assets/css/animate/animate.min.css") %>" />
+
+    <script type="text/javascript">
+        function alertMe(type, msg, layout, timeout) {
+
+            new Noty({
+                type: type,
+                layout: layout,
+                text: msg,
+                progressBar: true,
+                timeout: timeout,
+                animation: {
+                    open: "animated fadeIn",
+                    close: "animated fadeOut"
+                }
+            }).show();
+
+        }
+
+        function alertMeBottom(type, msg, layout) {
+            new Noty({
+                type: type,
+                layout: layout,
+                text: msg,
+                closeWith: ["click", "button"],
+                animation: {
+                    open: "animated bounceInUp",
+                    close: "animated bounceOutDown"
+                }
+            }).show();
+        }
+
+    </script>
+    <!-- Webapp by ranasikandar@mail.com -->
+    <asp:ContentPlaceHolder ID="CPHHead" runat="server" />
+
+</head>
+<body id="page-top">
+    <!-- Begin Preloader -->
+    <div id="preloader">
+        <div class="canvas">
+            <img src="<%: ResolveUrl("~/Template/assets/img/smallLogoWhite.png")%>" alt="logo" class="loader-logo" />
+            <div class="spinner"></div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+    <form id="frmMain" runat="server">
+
+        <div class="page db-modern">
+            <!-- Begin Header -->
+            <header class="header">
+                <div class="container">
+                    <nav class="navbar">
+                        <!-- Begin Topbar -->
+                        <div class="navbar-holder d-flex align-items-center align-middle justify-content-between">
+                            <!-- Begin Logo -->
+                            <div class="navbar-header">
+                                <a href="<%: ResolveUrl("~/Restaurant/Home.aspx")%>" class="navbar-brand">
+                                    <div class="brand-image brand-big">
+                                        <img src="<%: ResolveUrl("~/Template/assets/img/logo-2.png")%>" alt="logo" class="logo-big" />
+                                        <%--style="width: 70px;"--%>
+                                    </div>
+                                    <div class="brand-image brand-small">
+                                        <img src="<%: ResolveUrl("~/Template/assets/img/smallLogo_tran.png")%>" alt="logo" class="logo-small" />
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- End Logo -->
+
+                            <!-- Begin Navbar Menu -->
+                            <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center pull-right">
+
+                                <asp:ScriptManager ID="ScriptManagerMain" runat="server" EnablePartialRendering="true" EnablePageMethods="true" />
+                                <%--<asp:HiddenField ID="forgeryToken" runat="server" />--%>
+                                <script type="text/javascript">
+                                    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+                                    function EndRequestHandler(sender, args) {
+                                        if (args.get_error()) {
+                                            alertMe('error', 'Sorry we are unable to Proceed your request. Please try again. or check your internet connection', 'center', 5000);
+                                            console.log(args.get_error().description);
+                                            args.set_errorHandled(true);
+                                        }
+                                    }
+                                </script>
+
+                                <!-- Begin Notifications -->
+                                <asp:UpdatePanel runat="server" ID="updNoti" UpdateMode="Conditional">
+                                    <ContentTemplate>
+                                        <asp:Panel runat="server" ID="PnlNoti"></asp:Panel>
+                                    </ContentTemplate>
+                                    <Triggers>
+                                        <asp:AsyncPostBackTrigger ControlID="TimerNoti" EventName="Tick" />
+                                    </Triggers>
+                                </asp:UpdatePanel>
+                                <asp:Timer ID="TimerNoti" runat="server" Interval="60000" OnTick="TimerNoti_Tick"></asp:Timer>
+                                <!-- End Notifications -->
+
+                                <!-- User -->
+                                <li class="nav-item dropdown"><a id="user" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link">
+                                    <img src="<%: ResolveUrl("~/Template/assets/img/avatar/avatarWhite.png")%>" alt="..." class="avatar rounded-circle" /></a>
+                                    <ul aria-labelledby="user" class="user-size dropdown-menu">
+                                        <li class="welcome">
+                                            <a href="<%: ResolveUrl("~/Public/Signin.aspx?logout=1")%>" class="edit-profil"><i class="ti-power-off"></i></a>
+                                            <img src="<%: ResolveUrl("~/Template/assets/img/avatar/avatar-03.jpg")%>" alt="..." class="rounded-circle" />
+                                        </li>
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/ProfileUpdate.aspx")%>" class="dropdown-item no-padding-top">Profile</a></li>
+                                        <li><a href="<%: ResolveUrl("~/Public/ChangePassword.aspx")%>" class="dropdown-item no-padding-top">Change Password</a></li>
+                                        <li class="separator"></li>
+                                        <li>
+                                            <a class="dropdown-item no-padding-top" style="color: #a0a0a0;"><%Response.Write(RestaurantName.ToUpper()); %></a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item no-padding-top" style="color: #a0a0a0;">Exp: <%Response.Write(ValidityPeriod); %></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- End User -->
+                            </ul>
+                            <!-- End Navbar Menu -->
+
+                        </div>
+                        <!-- End Topbar -->
+                    </nav>
+                </div>
+            </header>
+            <!-- End Header -->
+
+            <!-- Begin Page Content -->
+            <div class="page-content">
+                <!-- Begin Navigation -->
+                <div class="horizontal-menu">
+                    <div class="container">
+                        <div class="row">
+                            <nav class="navbar navbar-light navbar-expand-lg main-menu">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </button>
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav mr-auto">
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/Home.aspx") %>">Home</a></li>
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/Orders.aspx") %>">Orders</a></li>
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/FoodMenu.aspx") %>">Food Menu</a></li>
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/Tables.aspx") %>">Restaurant Tables</a></li>
+                                        <li><a href="<%: ResolveUrl("~/Restaurant/Waiters.aspx") %>">Waiters</a></li>
+
+                                        <%--<li><a href="<% Response.Write(System.Configuration.ConfigurationManager.AppSettings["WebsiteAddress"].ToString());%>" target="_blank">Website</a></li>--%>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Navigation -->
+                <div class="content-inner boxed mt-4 w-100">
+                    <asp:ContentPlaceHolder ID="CPHBody" runat="server">
+                    </asp:ContentPlaceHolder>
+                    <!-- End Container -->
+                    <!-- Begin Page Footer-->
+                    <footer class="main-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-start justify-content-lg-start justify-content-md-start justify-content-center">
+                                    <p class="text-gradient-02" data-toggle="tooltip" data-placement="top" title="" data-original-title="Last time Login by enter Email and password">Last Login: <%Response.Write(LastLogin);%></p>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-xl-end justify-content-lg-end justify-content-md-end justify-content-center">
+                                    <ul class="nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="<%: ResolveUrl("~/Public/Signin.aspx?logout=1")%>" style="color: red;">'<%Response.Write(UName.ToUpper()); %>' Logout</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End Page Footer -->
+                    <a href="#" class="go-top"><i class="la la-arrow-up"></i></a>
+
+                </div>
+                <!-- End Content -->
+            </div>
+            <!-- End Page Content -->
+        </div>
+
+    </form>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/base/jquery.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/base/core.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/nicescroll/nicescroll.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/noty/noty.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/js/components/notifications/notifications.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/chart/chart.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/progress/circle-progress.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/vendors/js/app/app.min.js") %>"></script>
+    <script src="<%: ResolveUrl("~/Template/assets/js/dashboard/db-modern.min.js") %>"></script>
+    <!-- Webapp by ranasikandar@mail.com -->
+    <asp:ContentPlaceHolder ID="CPHFooter" runat="server" />
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+delete * from D:\MyProjects\RestaurantMenu\RestaurantMenu\Reso\res
+delete * from D:\MyProjects\RestaurantMenu\RestaurantMenu\ElmahLog\
+delete from D:\MyProjects\RestaurantMenu\RestaurantMenu\Error_Logs.txt
+---
+DELETE FROM UserLogs WHERE 1=1
+DELETE FROM OrderStatus WHERE 1=1
+DELETE FROM Orders WHERE 1=1
+DELETE FROM RestaurantWaiters WHERE 1=1
+DELETE FROM RestaurantTables WHERE 1=1
+DELETE FROM RestaurantUsers WHERE 1=1
+DELETE FROM ProductCategories WHERE 1=1
+DELETE FROM Products WHERE 1=1
+DELETE FROM Restaurants WHERE 1=1
+DELETE FROM Users WHERE [Type]!=1
+

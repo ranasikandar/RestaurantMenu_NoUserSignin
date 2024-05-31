@@ -1,0 +1,905 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F632E73-4AFD-4630-BE09-FB61E8297675}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RestaurantMenu</RootNamespace>
+    <AssemblyName>RestaurantMenu</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="QRCoder">
+      <HintPath>..\Temp\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Restaurants.aspx" />
+    <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Errors\InvalidRequest.aspx" />
+    <Content Include="Menu\Home.aspx" />
+    <Content Include="Menu\MyOrders.aspx" />
+    <Content Include="Menu\Order.aspx" />
+    <Content Include="Menu\UC\OrderDetail.aspx" />
+    <Content Include="Menu\UC\PrivacyPolicy.ascx" />
+    <Content Include="Menu\UC\TermsAndConditions.ascx" />
+    <Content Include="Public\ChangePassword.aspx" />
+    <Content Include="Public\EmailVerification.aspx" />
+    <Content Include="Public\ForgotPassword.aspx" />
+    <Content Include="Public\PasswordReset.aspx" />
+    <Content Include="Public\Pricing.aspx" />
+    <Content Include="Public\Signup.aspx" />
+    <Content Include="Restaurant\BrandingLogo.aspx" />
+    <Content Include="Restaurant\FoodMenu.aspx" />
+    <Content Include="Restaurant\Home.aspx" />
+    <Content Include="Restaurant\Orders.aspx" />
+    <Content Include="Restaurant\ProfileUpdate.aspx" />
+    <Content Include="Restaurant\Tables.aspx" />
+    <Content Include="Restaurant\UC\PrivacyPolicy.ascx" />
+    <Content Include="Restaurant\UC\ProductCategories.aspx" />
+    <Content Include="Restaurant\UC\TermsAndConditions.ascx" />
+    <Content Include="Restaurant\Waiters.aspx" />
+    <Content Include="Template\assets\icons\ionicons\fonts\ionicons.eot" />
+    <Content Include="Template\assets\icons\ionicons\fonts\ionicons.ttf" />
+    <Content Include="Template\assets\icons\ionicons\fonts\ionicons.woff" />
+    <Content Include="Template\assets\icons\lineawesome\fonts\line-awesome.eot" />
+    <Content Include="Template\assets\icons\lineawesome\fonts\line-awesome.ttf" />
+    <Content Include="Template\assets\icons\lineawesome\fonts\line-awesome.woff" />
+    <Content Include="Template\assets\icons\lineawesome\fonts\line-awesome.woff2" />
+    <Content Include="Template\assets\icons\meteocons\fonts\Meteocons.ttf" />
+    <Content Include="Template\assets\icons\meteocons\fonts\Meteocons.woff" />
+    <Content Include="Template\assets\icons\themify\fonts\themify.eot" />
+    <Content Include="Template\assets\icons\themify\fonts\themify.ttf" />
+    <Content Include="Template\assets\icons\themify\fonts\themify.woff" />
+    <Content Include="Template\assets\img\albums\04.jpg" />
+    <Content Include="Template\assets\img\avatar\avatarWhite.png" />
+    <Content Include="Template\assets\img\avatar\table-chairs.png" />
+    <Content Include="Template\assets\img\balls\foods.png" />
+    <Content Include="Template\assets\img\balls\restaurants.png" />
+    <Content Include="Template\assets\img\balls\tables.png" />
+    <Content Include="Template\assets\img\loading.png" />
+    <Content Include="Template\assets\img\logo-1.png" />
+    <Content Include="Template\assets\img\logo-3.png" />
+    <Content Include="Template\assets\img\logo-black.png" />
+    <Content Include="Template\assets\img\logo-trans.png" />
+    <Content Include="Template\assets\img\logoSmall.png" />
+    <Content Include="Template\assets\img\logoSmall2.png" />
+    <Content Include="Template\assets\img\qrLogo.png" />
+    <Content Include="Template\assets\img\smallLogoBlack.png" />
+    <Content Include="Template\assets\img\smallLogoTrans.png" />
+    <Content Include="Template\assets\img\smallLogo_tran.png" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\.bower.json" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\bower.json" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\daterangepicker.scss" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\browserify\README.md" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\package.json" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\README.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\bower.json" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\component.json" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\composer.json" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\CONTRIBUTING.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\ChangeLog.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\ContributorsGuide.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Events.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Extras.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\FAQ.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Functions.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\index.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Installing.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Options.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\manifest.json" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Version 4 Changelog.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\Version 4 Contributors guide.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\LICENSE" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\mkdocs.yml" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\package.json" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\README.md" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\less\bootstrap-datetimepicker-build.less" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\less\_bootstrap-datetimepicker.less" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\nuget\Bootstrap.v3.Datetimepicker.CSS.nuspec" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\nuget\Bootstrap.v3.Datetimepicker.nuspec" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\nuget\install.ps1" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\sass\bootstrap-datetimepicker-build.scss" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\sass\_bootstrap-datetimepicker.scss" />
+    <Content Include="Admin\Admin.Master" />
+    <Content Include="Restaurant\Restaurant.Master" />
+    <Content Include="packages.config" />
+    <Content Include="Menu\Menu.Master" />
+    <None Include="Properties\PublishProfiles\RestaurantMenuAlbertoPublish.pubxml" />
+    <Content Include="Waiter\AddPlace.aspx" />
+    <Content Include="Waiter\Home.aspx" />
+    <Content Include="Waiter\UC\AddPlace.aspx" />
+    <Content Include="Waiter\Waiter.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Home.aspx" />
+    <Content Include="Assets\Emails\Email_Verification.htm" />
+    <Content Include="Assets\Emails\PasswordReset.htm" />
+    <Content Include="Errors\InternalServerError.aspx" />
+    <Content Include="Errors\PageNotFound.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Public\Signin.aspx" />
+    <Content Include="Template\assets\css\animate\animate.css" />
+    <Content Include="Template\assets\css\animate\animate.min.css" />
+    <Content Include="Template\assets\css\bootstrap-select\bootstrap-select.css" />
+    <Content Include="Template\assets\css\bootstrap-select\bootstrap-select.min.css" />
+    <Content Include="Template\assets\css\datatables\datatables.css" />
+    <Content Include="Template\assets\css\datatables\datatables.min.css" />
+    <Content Include="Template\assets\css\leaflet\leaflet.css" />
+    <Content Include="Template\assets\css\leaflet\leaflet.min.css" />
+    <Content Include="Template\assets\css\lity\lity.css" />
+    <Content Include="Template\assets\css\lity\lity.min.css" />
+    <Content Include="Template\assets\css\owl-carousel\ajax-loader.gif" />
+    <Content Include="Template\assets\css\owl-carousel\owl.carousel.css" />
+    <Content Include="Template\assets\css\owl-carousel\owl.carousel.min.css" />
+    <Content Include="Template\assets\css\owl-carousel\owl.theme.css" />
+    <Content Include="Template\assets\css\owl-carousel\owl.theme.min.css" />
+    <Content Include="Template\assets\css\owl-carousel\owl.video.play.png" />
+    <Content Include="Template\assets\css\photoswipe\default-skin\default-skin.css" />
+    <Content Include="Template\assets\css\photoswipe\default-skin\default-skin.min.css" />
+    <Content Include="Template\assets\css\photoswipe\default-skin\default-skin.png" />
+    <Content Include="Template\assets\css\photoswipe\default-skin\default-skin.svg" />
+    <Content Include="Template\assets\css\photoswipe\default-skin\preloader.gif" />
+    <Content Include="Template\assets\css\photoswipe\photoswipe.css" />
+    <Content Include="Template\assets\css\photoswipe\photoswipe.min.css" />
+    <Content Include="Template\assets\icons\ionicons\css\ionicons.css" />
+    <Content Include="Template\assets\icons\ionicons\css\ionicons.min.css" />
+    <Content Include="Template\assets\icons\ionicons\fonts\ionicons.svg" />
+    <Content Include="Template\assets\icons\lineawesome\css\line-awesome-font-awesome.css" />
+    <Content Include="Template\assets\icons\lineawesome\css\line-awesome-font-awesome.min.css" />
+    <Content Include="Template\assets\icons\lineawesome\css\line-awesome.css" />
+    <Content Include="Template\assets\icons\lineawesome\css\line-awesome.min.css" />
+    <Content Include="Template\assets\icons\lineawesome\fonts\line-awesome.svg" />
+    <Content Include="Template\assets\icons\meteocons\css\meteocons.css" />
+    <Content Include="Template\assets\icons\meteocons\css\meteocons.min.css" />
+    <Content Include="Template\assets\icons\meteocons\fonts\Meteocons.svg" />
+    <Content Include="Template\assets\icons\themify\css\themify-icons.css" />
+    <Content Include="Template\assets\icons\themify\css\themify-icons.min.css" />
+    <Content Include="Template\assets\icons\themify\fonts\themify.svg" />
+    <Content Include="Template\assets\img\albums\01.jpg" />
+    <Content Include="Template\assets\img\albums\02.jpg" />
+    <Content Include="Template\assets\img\albums\03.jpg" />
+    <Content Include="Template\assets\img\apple-touch-icon.png" />
+    <Content Include="Template\assets\img\avatar\avatar-01-big.jpg" />
+    <Content Include="Template\assets\img\avatar\avatar-01.jpg" />
+    <Content Include="Template\assets\img\avatar\avatar-02-big.jpg" />
+    <Content Include="Template\assets\img\avatar\avatar-02.jpg" />
+    <Content Include="Template\assets\img\avatar\avatar-03-big.jpg" />
+    <Content Include="Template\assets\img\avatar\avatar-03.jpg" />
+    <Content Include="Template\assets\img\background\01.jpg" />
+    <Content Include="Template\assets\img\background\02.jpg" />
+    <Content Include="Template\assets\img\background\03.jpg" />
+    <Content Include="Template\assets\img\background\04.jpg" />
+    <Content Include="Template\assets\img\background\05.jpg" />
+    <Content Include="Template\assets\img\background\db-smarthome-dark.jpg" />
+    <Content Include="Template\assets\img\blog\blog-01.jpg" />
+    <Content Include="Template\assets\img\clouds.png" />
+    <Content Include="Template\assets\img\cover\01.jpg" />
+    <Content Include="Template\assets\img\cover\02.jpg" />
+    <Content Include="Template\assets\img\cover\03.jpg" />
+    <Content Include="Template\assets\img\cover\04.jpg" />
+    <Content Include="Template\assets\img\cover\05.jpg" />
+    <Content Include="Template\assets\img\cover\06.jpg" />
+    <Content Include="Template\assets\img\cover\07.jpg" />
+    <Content Include="Template\assets\img\cover\08.jpg" />
+    <Content Include="Template\assets\img\email\03.png" />
+    <Content Include="Template\assets\img\email\04.png" />
+    <Content Include="Template\assets\img\email\05.png" />
+    <Content Include="Template\assets\img\email\06.png" />
+    <Content Include="Template\assets\img\email\ico-facebook.png" />
+    <Content Include="Template\assets\img\email\ico-linkedin.png" />
+    <Content Include="Template\assets\img\email\ico-twitter.png" />
+    <Content Include="Template\assets\img\favicon-16x16.png" />
+    <Content Include="Template\assets\img\favicon-32x32.png" />
+    <Content Include="Template\assets\img\favicon.ico" />
+    <Content Include="Template\assets\img\favicon.png" />
+    <Content Include="Template\assets\img\group\01.jpg" />
+    <Content Include="Template\assets\img\group\02.jpg" />
+    <Content Include="Template\assets\img\group\03.jpg" />
+    <Content Include="Template\assets\img\group\04.jpg" />
+    <Content Include="Template\assets\img\group\05.jpg" />
+    <Content Include="Template\assets\img\group\06.jpg" />
+    <Content Include="Template\assets\img\icone-01-white.png" />
+    <Content Include="Template\assets\img\icone-01.png" />
+    <Content Include="Template\assets\img\icone-02-white.png" />
+    <Content Include="Template\assets\img\icone-02.png" />
+    <Content Include="Template\assets\img\icone-03-white.png" />
+    <Content Include="Template\assets\img\icone-03.png" />
+    <Content Include="Template\assets\img\icone-04-white.png" />
+    <Content Include="Template\assets\img\icone-04.png" />
+    <Content Include="Template\assets\img\logo-2.png" />
+    <Content Include="Template\assets\img\logo-white.png" />
+    <Content Include="Template\assets\img\logo.png" />
+    <Content Include="Template\assets\img\music\01.jpg" />
+    <Content Include="Template\assets\img\music\02.jpg" />
+    <Content Include="Template\assets\img\music\03.jpg" />
+    <Content Include="Template\assets\img\notifications\01.jpg" />
+    <Content Include="Template\assets\img\notifications\02.jpg" />
+    <Content Include="Template\assets\img\notifications\03.jpg" />
+    <Content Include="Template\assets\img\plugins\leaflet\custom-marker-shadow.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\custom-marker.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\layers-2x.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\layers.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\marker-icon-2x.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\marker-icon.png" />
+    <Content Include="Template\assets\img\plugins\leaflet\marker-shadow.png" />
+    <Content Include="Template\assets\img\smallLogoWhite.png" />
+    <Content Include="Template\assets\img\smarthome\01.jpg" />
+    <Content Include="Template\assets\img\smarthome\02.jpg" />
+    <Content Include="Template\assets\img\smarthome\03.jpg" />
+    <Content Include="Template\assets\img\smarthome\04.jpg" />
+    <Content Include="Template\assets\img\smarthome\05.jpg" />
+    <Content Include="Template\assets\img\smarthome\06.jpg" />
+    <Content Include="Template\assets\img\smarthome\07.jpg" />
+    <Content Include="Template\assets\img\smarthome\08.jpg" />
+    <Content Include="Template\assets\img\smarthome\09.jpg" />
+    <Content Include="Template\assets\img\smarthome\10.jpg" />
+    <Content Include="Template\assets\img\smarthome\11.jpg" />
+    <Content Include="Template\assets\img\smarthome\12.jpg" />
+    <Content Include="Template\assets\img\smarthome\13.jpg" />
+    <Content Include="Template\assets\img\smarthome\14.jpg" />
+    <Content Include="Template\assets\img\smarthome\15.jpg" />
+    <Content Include="Template\assets\img\smarthome\16.jpg" />
+    <Content Include="Template\assets\img\smarthome\17.jpg" />
+    <Content Include="Template\assets\img\smarthome\18.jpg" />
+    <Content Include="Template\assets\img\smarthome\19.jpg" />
+    <Content Include="Template\assets\img\smarthome\TaskAccepted.jpg" />
+    <Content Include="Template\assets\img\smarthome\TaskDenied.jpg" />
+    <Content Include="Template\assets\img\smarthome\TaskInspection.jpg" />
+    <Content Include="Template\assets\img\smarthome\TaskNew.jpg" />
+    <Content Include="Template\assets\img\videos\01.jpg" />
+    <Content Include="Template\assets\img\videos\02.jpg" />
+    <Content Include="Template\assets\img\videos\03.jpg" />
+    <Content Include="Template\assets\img\videos\04.jpg" />
+    <Content Include="Template\assets\img\videos\05.jpg" />
+    <Content Include="Template\assets\img\videos\06.jpg" />
+    <Content Include="Template\assets\img\videos\07.jpg" />
+    <Content Include="Template\assets\img\videos\08.jpg" />
+    <Content Include="Template\assets\img\videos\09.jpg" />
+    <Content Include="Template\assets\js\app\calendar\basic-calendar.js" />
+    <Content Include="Template\assets\js\app\calendar\basic-calendar.min.js" />
+    <Content Include="Template\assets\js\app\calendar\event-calendar.js" />
+    <Content Include="Template\assets\js\app\calendar\event-calendar.min.js" />
+    <Content Include="Template\assets\js\app\calendar\list-calendar.js" />
+    <Content Include="Template\assets\js\app\calendar\list-calendar.min.js" />
+    <Content Include="Template\assets\js\app\chat\chat.js" />
+    <Content Include="Template\assets\js\app\chat\chat.min.js" />
+    <Content Include="Template\assets\js\app\contact\contact.js" />
+    <Content Include="Template\assets\js\app\contact\contact.min.js" />
+    <Content Include="Template\assets\js\app\mail\mail.js" />
+    <Content Include="Template\assets\js\app\mail\mail.min.js" />
+    <Content Include="Template\assets\js\components\chartjs\chartjs.js" />
+    <Content Include="Template\assets\js\components\chartjs\chartjs.min.js" />
+    <Content Include="Template\assets\js\components\datepicker\datepicker.js" />
+    <Content Include="Template\assets\js\components\leaflet\maps-leaflet.js" />
+    <Content Include="Template\assets\js\components\leaflet\maps-leaflet.min.js" />
+    <Content Include="Template\assets\js\components\music\music-player.js" />
+    <Content Include="Template\assets\js\components\music\music-player.min.js" />
+    <Content Include="Template\assets\js\components\notifications\notifications.js" />
+    <Content Include="Template\assets\js\components\notifications\notifications.min.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.animate.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.brighttheme.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.buttons.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.buttons.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.callbacks.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.confirm.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.desktop.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.history.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.history.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.material.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.mobile.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.mobile.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.nonblock.css" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.nonblock.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.reference.js" />
+    <Content Include="Template\assets\js\components\notifications\pnotify\dist\pnotify.tooltip.js" />
+    <Content Include="Template\assets\js\components\scrollable\scrollable.js" />
+    <Content Include="Template\assets\js\components\scrollable\scrollable.min.js" />
+    <Content Include="Template\assets\js\components\tabledit\tabledit.js" />
+    <Content Include="Template\assets\js\components\tables\tables.js" />
+    <Content Include="Template\assets\js\components\tabs\animated-tabs.js" />
+    <Content Include="Template\assets\js\components\tabs\animated-tabs.min.js" />
+    <Content Include="Template\assets\js\components\validation\validation.js" />
+    <Content Include="Template\assets\js\components\validation\validation.min.js" />
+    <Content Include="Template\assets\js\components\widgets\widgets-dark.js" />
+    <Content Include="Template\assets\js\components\widgets\widgets-dark.min.js" />
+    <Content Include="Template\assets\js\components\widgets\widgets.js" />
+    <Content Include="Template\assets\js\components\widgets\widgets.min.js" />
+    <Content Include="Template\assets\js\components\wizard\form-wizard.js" />
+    <Content Include="Template\assets\js\components\wizard\form-wizard.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-clean-dark.js" />
+    <Content Include="Template\assets\js\dashboard\db-clean-dark.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-clean.js" />
+    <Content Include="Template\assets\js\dashboard\db-clean.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-compact-dark.js" />
+    <Content Include="Template\assets\js\dashboard\db-compact-dark.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-compact.js" />
+    <Content Include="Template\assets\js\dashboard\db-compact.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-default-dark.js" />
+    <Content Include="Template\assets\js\dashboard\db-default-dark.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-default.js" />
+    <Content Include="Template\assets\js\dashboard\db-default.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-modern-dark.js" />
+    <Content Include="Template\assets\js\dashboard\db-modern-dark.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-modern.js" />
+    <Content Include="Template\assets\js\dashboard\db-modern.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-smarthome-dark.js" />
+    <Content Include="Template\assets\js\dashboard\db-smarthome-dark.min.js" />
+    <Content Include="Template\assets\js\dashboard\db-smarthome.js" />
+    <Content Include="Template\assets\js\dashboard\db-smarthome.min.js" />
+    <Content Include="Template\assets\js\pages\coming-soon.js" />
+    <Content Include="Template\assets\js\pages\coming-soon.min.js" />
+    <Content Include="Template\assets\js\pages\events.js" />
+    <Content Include="Template\assets\js\pages\events.min.js" />
+    <Content Include="Template\assets\js\pages\friends.js" />
+    <Content Include="Template\assets\js\pages\friends.min.js" />
+    <Content Include="Template\assets\js\pages\newsfeed.js" />
+    <Content Include="Template\assets\js\pages\newsfeed.min.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\daterangepicker.css" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\daterangepicker.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\demo.html" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\drp.png" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\amd\index.html" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\amd\main.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\amd\require.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\browserify\bundle.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\browserify\index.html" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\example\browserify\main.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\package.js" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\website\index.html" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\website\website.css" />
+    <Content Include="Template\assets\vendors\bootstrap-daterangepicker\website\website.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\build\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-144x144.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-192x192.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-36x36.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-48x48.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-72x72.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\android-chrome-96x96.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-114x114.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-120x120.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-144x144.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-152x152.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-180x180.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-57x57.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-60x60.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-72x72.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-76x76.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon-precomposed.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\apple-touch-icon.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\base.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\browserconfig.xml" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\content.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\css\base.css" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\css\prettify-1.0.css" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\favicon-16x16.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\favicon-32x32.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\favicon-96x96.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\favicon.ico" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\js\base.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\js\prettify-1.0.min.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\mstile-144x144.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\mstile-150x150.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\mstile-310x150.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\mstile-310x310.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\mstile-70x70.png" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\nav.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\docs\theme\toc.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\Gruntfile.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\js\bootstrap-datetimepicker.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\src\nuget\NuGet.exe" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\tasks\bump_version.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\publicApiSpec.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\base.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\compile.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\index.js" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\t1.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\t2.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\t3.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\t4.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\screen-capture\t5.html" />
+    <Content Include="Template\assets\vendors\bootstrap-datetimepicker\test\timezoneDataHelper.js" />
+    <Content Include="Template\assets\vendors\css\base\bootstrap.css" />
+    <Content Include="Template\assets\vendors\css\base\bootstrap.min.css" />
+    <Content Include="Template\assets\vendors\css\base\elisyam-1.5-dark.css" />
+    <Content Include="Template\assets\vendors\css\base\elisyam-1.5-dark.min.css" />
+    <Content Include="Template\assets\vendors\css\base\elisyam-1.5.min.css" />
+    <Content Include="Template\assets\vendors\css\base\elisyam-1.5.css" />
+    <Content Include="Template\assets\vendors\js\app\app.js" />
+    <Content Include="Template\assets\vendors\js\app\app.min.js" />
+    <Content Include="Template\assets\vendors\js\base\core.js" />
+    <Content Include="Template\assets\vendors\js\base\core.min.js" />
+    <Content Include="Template\assets\vendors\js\base\jquery.min.js" />
+    <Content Include="Template\assets\vendors\js\base\jquery.ui.min.js" />
+    <Content Include="Template\assets\vendors\js\bootstrap-select\bootstrap-select.js" />
+    <Content Include="Template\assets\vendors\js\bootstrap-select\bootstrap-select.min.js" />
+    <Content Include="Template\assets\vendors\js\bootstrap-wizard\bootstrap.wizard.js" />
+    <Content Include="Template\assets\vendors\js\bootstrap-wizard\bootstrap.wizard.min.js" />
+    <Content Include="Template\assets\vendors\js\calendar\fullcalendar.js" />
+    <Content Include="Template\assets\vendors\js\calendar\fullcalendar.min.js" />
+    <Content Include="Template\assets\vendors\js\calendar\moment.min.js" />
+    <Content Include="Template\assets\vendors\js\chart\chart.js" />
+    <Content Include="Template\assets\vendors\js\chart\chart.min.js" />
+    <Content Include="Template\assets\vendors\js\countdown\countdown.js" />
+    <Content Include="Template\assets\vendors\js\countdown\countdown.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.bootstrap4.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.bootstrap4.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.colVis.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.colVis.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.flash.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.flash.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.html5.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.html5.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.print.js" />
+    <Content Include="Template\assets\vendors\js\datatables\buttons.print.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\dataTables.buttons.js" />
+    <Content Include="Template\assets\vendors\js\datatables\dataTables.buttons.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\datatables.js" />
+    <Content Include="Template\assets\vendors\js\datatables\datatables.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\jszip.js" />
+    <Content Include="Template\assets\vendors\js\datatables\jszip.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\pdfmake.js" />
+    <Content Include="Template\assets\vendors\js\datatables\pdfmake.min.js" />
+    <Content Include="Template\assets\vendors\js\datatables\vfs_fonts.js" />
+    <Content Include="Template\assets\vendors\js\datepicker\daterangepicker.js" />
+    <Content Include="Template\assets\vendors\js\datepicker\moment.min.js" />
+    <Content Include="Template\assets\vendors\js\leaflet\leaflet.js" />
+    <Content Include="Template\assets\vendors\js\leaflet\leaflet.min.js" />
+    <Content Include="Template\assets\vendors\js\lity\lity.js" />
+    <Content Include="Template\assets\vendors\js\lity\lity.min.js" />
+    <Content Include="Template\assets\vendors\js\nicescroll\nicescroll.js" />
+    <Content Include="Template\assets\vendors\js\nicescroll\nicescroll.min.js" />
+    <Content Include="Template\assets\vendors\js\noty\noty.js" />
+    <Content Include="Template\assets\vendors\js\noty\noty.min.js" />
+    <Content Include="Template\assets\vendors\js\owl-carousel\owl.carousel.js" />
+    <Content Include="Template\assets\vendors\js\owl-carousel\owl.carousel.min.js" />
+    <Content Include="Template\assets\vendors\js\photoswipe\photoswipe-ui-default.js" />
+    <Content Include="Template\assets\vendors\js\photoswipe\photoswipe-ui-default.min.js" />
+    <Content Include="Template\assets\vendors\js\photoswipe\photoswipe.js" />
+    <Content Include="Template\assets\vendors\js\photoswipe\photoswipe.min.js" />
+    <Content Include="Template\assets\vendors\js\progress\circle-progress.js" />
+    <Content Include="Template\assets\vendors\js\progress\circle-progress.min.js" />
+    <Content Include="Template\assets\vendors\js\tabledit\jquery.tabledit.js" />
+    <Content Include="Template\assets\vendors\js\tabledit\jquery.tabledit.min.js" />
+    <Content Include="Template\js\RestaurantOrderFunc.js" />
+    <Content Include="Template\select2\css\select2.css" />
+    <Content Include="Template\select2\css\select2.min.css" />
+    <Content Include="Template\select2\js\i18n\af.js" />
+    <Content Include="Template\select2\js\i18n\ar.js" />
+    <Content Include="Template\select2\js\i18n\az.js" />
+    <Content Include="Template\select2\js\i18n\bg.js" />
+    <Content Include="Template\select2\js\i18n\bn.js" />
+    <Content Include="Template\select2\js\i18n\bs.js" />
+    <Content Include="Template\select2\js\i18n\ca.js" />
+    <Content Include="Template\select2\js\i18n\cs.js" />
+    <Content Include="Template\select2\js\i18n\da.js" />
+    <Content Include="Template\select2\js\i18n\de.js" />
+    <Content Include="Template\select2\js\i18n\dsb.js" />
+    <Content Include="Template\select2\js\i18n\el.js" />
+    <Content Include="Template\select2\js\i18n\en.js" />
+    <Content Include="Template\select2\js\i18n\es.js" />
+    <Content Include="Template\select2\js\i18n\et.js" />
+    <Content Include="Template\select2\js\i18n\eu.js" />
+    <Content Include="Template\select2\js\i18n\fa.js" />
+    <Content Include="Template\select2\js\i18n\fi.js" />
+    <Content Include="Template\select2\js\i18n\fr.js" />
+    <Content Include="Template\select2\js\i18n\gl.js" />
+    <Content Include="Template\select2\js\i18n\he.js" />
+    <Content Include="Template\select2\js\i18n\hi.js" />
+    <Content Include="Template\select2\js\i18n\hr.js" />
+    <Content Include="Template\select2\js\i18n\hsb.js" />
+    <Content Include="Template\select2\js\i18n\hu.js" />
+    <Content Include="Template\select2\js\i18n\hy.js" />
+    <Content Include="Template\select2\js\i18n\id.js" />
+    <Content Include="Template\select2\js\i18n\is.js" />
+    <Content Include="Template\select2\js\i18n\it.js" />
+    <Content Include="Template\select2\js\i18n\ja.js" />
+    <Content Include="Template\select2\js\i18n\ka.js" />
+    <Content Include="Template\select2\js\i18n\km.js" />
+    <Content Include="Template\select2\js\i18n\ko.js" />
+    <Content Include="Template\select2\js\i18n\lt.js" />
+    <Content Include="Template\select2\js\i18n\lv.js" />
+    <Content Include="Template\select2\js\i18n\mk.js" />
+    <Content Include="Template\select2\js\i18n\ms.js" />
+    <Content Include="Template\select2\js\i18n\nb.js" />
+    <Content Include="Template\select2\js\i18n\ne.js" />
+    <Content Include="Template\select2\js\i18n\nl.js" />
+    <Content Include="Template\select2\js\i18n\pl.js" />
+    <Content Include="Template\select2\js\i18n\ps.js" />
+    <Content Include="Template\select2\js\i18n\pt-BR.js" />
+    <Content Include="Template\select2\js\i18n\pt.js" />
+    <Content Include="Template\select2\js\i18n\ro.js" />
+    <Content Include="Template\select2\js\i18n\ru.js" />
+    <Content Include="Template\select2\js\i18n\sk.js" />
+    <Content Include="Template\select2\js\i18n\sl.js" />
+    <Content Include="Template\select2\js\i18n\sq.js" />
+    <Content Include="Template\select2\js\i18n\sr-Cyrl.js" />
+    <Content Include="Template\select2\js\i18n\sr.js" />
+    <Content Include="Template\select2\js\i18n\sv.js" />
+    <Content Include="Template\select2\js\i18n\th.js" />
+    <Content Include="Template\select2\js\i18n\tk.js" />
+    <Content Include="Template\select2\js\i18n\tr.js" />
+    <Content Include="Template\select2\js\i18n\uk.js" />
+    <Content Include="Template\select2\js\i18n\vi.js" />
+    <Content Include="Template\select2\js\i18n\zh-CN.js" />
+    <Content Include="Template\select2\js\i18n\zh-TW.js" />
+    <Content Include="Template\select2\js\select2.full.js" />
+    <Content Include="Template\select2\js\select2.full.min.js" />
+    <Content Include="Template\select2\js\select2.js" />
+    <Content Include="Template\select2\js\select2.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Restaurants.aspx.cs">
+      <DependentUpon>Restaurants.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Restaurants.aspx.designer.cs">
+      <DependentUpon>Restaurants.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BLL\Clients.cs" />
+    <Compile Include="BLL\Restaurants.cs" />
+    <Compile Include="BLL\Users.cs" />
+    <Compile Include="DAL\Database.cs" />
+    <Compile Include="Errors\InternalServerError.aspx.cs">
+      <DependentUpon>InternalServerError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\InternalServerError.aspx.designer.cs">
+      <DependentUpon>InternalServerError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\InvalidRequest.aspx.cs">
+      <DependentUpon>InvalidRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\InvalidRequest.aspx.designer.cs">
+      <DependentUpon>InvalidRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\PageNotFound.aspx.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\PageNotFound.aspx.designer.cs">
+      <DependentUpon>PageNotFound.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Alert.cs" />
+    <Compile Include="Helpers\CookieNames.cs" />
+    <Compile Include="Helpers\CSRF_Handler.cs" />
+    <Compile Include="Helpers\Email.cs" />
+    <Compile Include="Helpers\Encryption.cs" />
+    <Compile Include="Helpers\Global.cs" />
+    <Compile Include="Helpers\ResizeImage.cs" />
+    <Compile Include="Helpers\WriteLogToFile.cs" />
+    <Compile Include="Menu\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Menu.Master.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\Menu.Master.designer.cs">
+      <DependentUpon>Menu.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\MyOrders.aspx.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\MyOrders.aspx.designer.cs">
+      <DependentUpon>MyOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\Order.aspx.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\Order.aspx.designer.cs">
+      <DependentUpon>Order.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\UC\OrderDetail.aspx.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\UC\OrderDetail.aspx.designer.cs">
+      <DependentUpon>OrderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\UC\PrivacyPolicy.ascx.cs">
+      <DependentUpon>PrivacyPolicy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\UC\PrivacyPolicy.ascx.designer.cs">
+      <DependentUpon>PrivacyPolicy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu\UC\TermsAndConditions.ascx.cs">
+      <DependentUpon>TermsAndConditions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu\UC\TermsAndConditions.ascx.designer.cs">
+      <DependentUpon>TermsAndConditions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Objects\Product.cs" />
+    <Compile Include="Objects\ProductCategories.cs" />
+    <Compile Include="Objects\Restaurant.cs" />
+    <Compile Include="Objects\RestaurantClient.cs" />
+    <Compile Include="Objects\RestaurantUser.cs" />
+    <Compile Include="Objects\RestaurantTable.cs" />
+    <Compile Include="Objects\User.cs" />
+    <Compile Include="Objects\Waiter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Public\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\EmailVerification.aspx.cs">
+      <DependentUpon>EmailVerification.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\EmailVerification.aspx.designer.cs">
+      <DependentUpon>EmailVerification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\PasswordReset.aspx.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\PasswordReset.aspx.designer.cs">
+      <DependentUpon>PasswordReset.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Pricing.aspx.cs">
+      <DependentUpon>Pricing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\Pricing.aspx.designer.cs">
+      <DependentUpon>Pricing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Signin.aspx.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\Signin.aspx.designer.cs">
+      <DependentUpon>Signin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Public\Signup.aspx.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Public\Signup.aspx.designer.cs">
+      <DependentUpon>Signup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\BrandingLogo.aspx.cs">
+      <DependentUpon>BrandingLogo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\BrandingLogo.aspx.designer.cs">
+      <DependentUpon>BrandingLogo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\FoodMenu.aspx.cs">
+      <DependentUpon>FoodMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\FoodMenu.aspx.designer.cs">
+      <DependentUpon>FoodMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\Orders.aspx.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\Orders.aspx.designer.cs">
+      <DependentUpon>Orders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\Restaurant.Master.cs">
+      <DependentUpon>Restaurant.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\Restaurant.Master.designer.cs">
+      <DependentUpon>Restaurant.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\ProfileUpdate.aspx.cs">
+      <DependentUpon>ProfileUpdate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\ProfileUpdate.aspx.designer.cs">
+      <DependentUpon>ProfileUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\Tables.aspx.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\Tables.aspx.designer.cs">
+      <DependentUpon>Tables.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\UC\PrivacyPolicy.ascx.cs">
+      <DependentUpon>PrivacyPolicy.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\UC\PrivacyPolicy.ascx.designer.cs">
+      <DependentUpon>PrivacyPolicy.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\UC\ProductCategories.aspx.cs">
+      <DependentUpon>ProductCategories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\UC\ProductCategories.aspx.designer.cs">
+      <DependentUpon>ProductCategories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\UC\TermsAndConditions.ascx.cs">
+      <DependentUpon>TermsAndConditions.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\UC\TermsAndConditions.ascx.designer.cs">
+      <DependentUpon>TermsAndConditions.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\Waiters.aspx.cs">
+      <DependentUpon>Waiters.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Restaurant\Waiters.aspx.designer.cs">
+      <DependentUpon>Waiters.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\AddPlace.aspx.cs">
+      <DependentUpon>AddPlace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Waiter\AddPlace.aspx.designer.cs">
+      <DependentUpon>AddPlace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Waiter\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\UC\AddPlace.aspx.cs">
+      <DependentUpon>AddPlace.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Waiter\UC\AddPlace.aspx.designer.cs">
+      <DependentUpon>AddPlace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Waiter\Waiter.Master.cs">
+      <DependentUpon>Waiter.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Waiter\Waiter.Master.designer.cs">
+      <DependentUpon>Waiter.Master</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="ElmahLog\" />
+    <Folder Include="Models\" />
+    <Folder Include="Reso\res\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58044</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:58044/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
